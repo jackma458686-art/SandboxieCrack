@@ -1,7 +1,3 @@
-message("PWD is: $$PWD")
-message("ukeysequence.cpp exists? $$exists($$PWD/ukeysequence.cpp)")
-message("uglobalhotkeys.cpp exists? $$exists($$PWD/uglobalhotkeys.cpp)")
-message("uexception.cpp exists? $$exists($$PWD/uexception.cpp)")
 QT = core gui
 unix {
     QT += gui-private
