@@ -71,16 +71,14 @@ call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Buil
 @echo on
 
 
+
 mkdir %~dp0\Build_UGlobalHotkey_%build_arch%
 cd %~dp0\Build_UGlobalHotkey_%build_arch%
-pushd %~dp0\Build_UGlobalHotkey_%build_arch%
+
 %qt_path%\bin\qmake.exe %~dp0\UGlobalHotkey\uglobalhotkey.qc.pro %qt_params%
-popd
-type "%~dp0\Build_UGlobalHotkey_%build_arch%\build_full.log"
-"%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe" -f Makefile.Release -j 1 > build_full.log 2>&1
+%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe -f Makefile.Release -j 8
 IF %ERRORLEVEL% NEQ 0 goto :error
 if NOT EXIST %~dp0\bin\%build_arch%\Release\UGlobalHotkey.dll goto :error
-
 
 
 mkdir %~dp0\Build_qtsingleapp_%build_arch%
