@@ -26,6 +26,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = UGlobalHotkey
 TEMPLATE = lib
+CONFIG += sources
 CONFIG += c++11
 
 # Switch ABI to export (vs import, which is default)
