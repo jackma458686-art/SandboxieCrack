@@ -1,6 +1,7 @@
 INCLUDEPATH += $$PWD/
 
 QT += gui-private
+CONFIG += sources
 
 SOURCES += \
     $$PWD/ukeysequence.cpp \
