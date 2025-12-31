@@ -78,7 +78,8 @@ cd %~dp0\Build_UGlobalHotkey_%build_arch%
 %qt_path%\bin\qmake.exe %~dp0\UGlobalHotkey\uglobalhotkey.qc.pro %qt_params%
 
 pushd %~dp0\Build_UGlobalHotkey_%build_arch%
-type Makefile.Release
+REM dir obj
+dir release\*.obj
 "%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe" -f Makefile.Release -j 1 > build_full.log 2>&1
 
 popd
