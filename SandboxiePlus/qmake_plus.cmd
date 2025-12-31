@@ -76,8 +76,15 @@ mkdir %~dp0\Build_UGlobalHotkey_%build_arch%
 cd %~dp0\Build_UGlobalHotkey_%build_arch%
 
 %qt_path%\bin\qmake.exe %~dp0\UGlobalHotkey\uglobalhotkey.qc.pro %qt_params%
-%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe -f Makefile.Release -j 1 > build_full.log 2>&1
-REM type "build_full.log"
+
+pushd %~dp0\Build_UGlobalHotkey_%build_arch%
+
+"%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe" -f Makefile.Release -j 1 > build_full.log 2>&1
+
+popd
+REM log
+type "%~dp0\Build_UGlobalHotkey_%build_arch%\build_full.log"
+REM endlog
 
 IF %ERRORLEVEL% NEQ 0 goto :error
 if NOT EXIST %~dp0\bin\%build_arch%\Release\UGlobalHotkey.dll goto :error
