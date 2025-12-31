@@ -1,7 +1,23 @@
 message("PWD is: $$PWD")
-message("ukeysequence.cpp exists? $$exists($$PWD/ukeysequence.cpp)")
-message("uglobalhotkeys.cpp exists? $$exists($$PWD/uglobalhotkeys.cpp)")
-message("uexception.cpp exists? $$exists($$PWD/uexception.cpp)")
+
+exists(ukeysequence.cpp) {
+    message("ukeysequence.cpp exists: yes")
+} else {
+    message("ukeysequence.cpp exists: no")
+}
+
+exists(uglobalhotkeys.cpp) {
+    message("uglobalhotkeys.cpp exists: yes")
+} else {
+    message("uglobalhotkeys.cpp exists: no")
+}
+
+exists(uexception.cpp) {
+    message("uexception.cpp exists: yes")
+} else {
+    message("uexception.cpp exists: no")
+}
+
 QT = core gui
 unix {
     QT += gui-private
