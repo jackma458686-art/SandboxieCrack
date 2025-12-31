@@ -71,19 +71,13 @@ call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Buil
 @echo on
 
 
-
-REM Create build folder
 mkdir %~dp0\Build_UGlobalHotkey_%build_arch%
-
-REM Generate Makefile from the source folder into the build folder
-pushd %~dp0\UGlobalHotkey
-"%qt_path%\bin\qmake.exe" -spec win32-msvc -o "%~dp0\Build_UGlobalHotkey_%build_arch%\Makefile.Release" uglobalhotkey.qc.pro %qt_params%
-popd
-
-REM Now build from the build folder
+cd %~dp0\Build_UGlobalHotkey_%build_arch%
 pushd %~dp0\Build_UGlobalHotkey_%build_arch%
-"%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe" -f Makefile.Release -j 8 VERBOSE=1
+%qt_path%\bin\qmake.exe %~dp0\UGlobalHotkey\uglobalhotkey.qc.pro %qt_params%
 popd
+type "%~dp0\Build_UGlobalHotkey_%build_arch%\build_full.log"
+"%~dp0..\..\Qt\Tools\QtCreator\bin\jom.exe" -f Makefile.Release -j 1 > build_full.log 2>&1
 IF %ERRORLEVEL% NEQ 0 goto :error
 if NOT EXIST %~dp0\bin\%build_arch%\Release\UGlobalHotkey.dll goto :error
 
